@@ -23,7 +23,7 @@ public class Account {
     private Long id;
 
     @NonNull
-    @Enumerated(EnumType.STRING) // Use EnumType.STRING for string-based representation
+    @Enumerated(EnumType.STRING)
     private Type type;
 
     @NonNull
