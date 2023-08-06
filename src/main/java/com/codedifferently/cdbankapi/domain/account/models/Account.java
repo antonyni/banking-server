@@ -1,7 +1,7 @@
 package com.codedifferently.cdbankapi.domain.account.models;
 
 import com.codedifferently.cdbankapi.domain.deposit.models.Deposit;
-import com.codedifferently.cdbankapi.domain.withdrawl.models.Withdrawal;
+import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
 import com.codedifferently.cdbankapi.domain.enums.Type;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
@@ -21,24 +21,28 @@ public class Account {
     private Long id;
 
     @NonNull
-    Type type;
+    private Type type;
 
     @NonNull
-    String nickname;
+    private String nickname;
 
     @NonNull
-    Long balance;
+    private Long balance;
 
     @NonNull
-    String customer;
+    private String customer;
 
-    @OneToMany
+    @NonNull
+
+    private String password;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy ="account")
     @JsonManagedReference
-    List<Deposit> deposits;
+    private List<Deposit> deposits;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL, mappedBy ="account")
     @JsonManagedReference
-    List<Withdrawal> withdrawls;
+    private List<Withdrawal> withdrawals;
 
 
 
