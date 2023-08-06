@@ -35,6 +35,8 @@ public class AccountServiceImplTest {
     private Account inputAccount;
     private Account mockResponseAccountEntity;
 
+    private Account mockProcess;
+
     private List<Deposit> depositList;
 
     private List<Withdrawal> withdrawalList;
@@ -48,6 +50,10 @@ public class AccountServiceImplTest {
 
         mockResponseAccountEntity = new Account(Type.CHECKINGS, "Checking Account",300L, "Jane Doe", "password", depositList, withdrawalList);
         mockResponseAccountEntity.setId(1L);
+
+        mockProcess = new Account();
+        mockProcess.setId(2L);
+        mockProcess.setBalance(100L);
     }
 
     @Test
@@ -169,5 +175,49 @@ public class AccountServiceImplTest {
         Assertions.assertThrows(AccountException.class, ()-> {
             accountService.deleteUser(1L);
         });
+    }
+
+    @Test
+    @DisplayName("Account Service: Process Withdrawal - Success")
+    public void processWithdrawalTestSuccess() throws AccountException {
+        Long withdrawalAmount = 20L;
+
+        BDDMockito.doReturn(Optional.of(mockProcess)).when(mockAccountRepo).findById(2L);
+
+        BDDMockito.doReturn(mockProcess).when(mockAccountRepo).save(mockProcess);
+
+        accountService.processWithdrawal(2L, withdrawalAmount);
+
+        Assertions.assertEquals(80L, mockProcess.getBalance()); // Updated balance
+    }
+
+    @Test
+    @DisplayName("Account Service: Process Withdrawal - Insufficient Funds")
+    public void processWithdrawalTestInsufficientFunds() throws AccountException {
+        Long withdrawalAmount = 200L;
+
+        BDDMockito.doReturn(Optional.of(mockProcess)).when(mockAccountRepo).findById(2L);
+
+        BDDMockito.doReturn(mockProcess).when(mockAccountRepo).save(mockProcess);
+
+        AccountException accountException = Assertions.assertThrows(AccountException.class, () -> {
+            accountService.processWithdrawal(2L, withdrawalAmount);
+        });
+
+        Assertions.assertEquals("insufficient funds",accountException.getMessage());
+    }
+
+    @Test
+    @DisplayName("Account Service: Process Deposit - Success")
+    public void processDepositTestSuccess() throws AccountException {
+        Long depositAmount = 20L;
+
+        BDDMockito.doReturn(Optional.of(mockProcess)).when(mockAccountRepo).findById(2L);
+
+        BDDMockito.doReturn(mockProcess).when(mockAccountRepo).save(mockProcess);
+
+        accountService.processDeposit(2L, depositAmount);
+
+        Assertions.assertEquals(120L, mockProcess.getBalance()); // Updated balance
     }
 }

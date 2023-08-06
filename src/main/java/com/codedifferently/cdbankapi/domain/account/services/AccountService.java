@@ -18,7 +18,13 @@ public interface AccountService {
 
     Integer loginChecker (String nickname,String password) throws AccountException;
 
+    void processWithdrawal(Long accountId, Long withdrawalAmount) throws AccountException;
+
+    void processDeposit(Long accountId, Long depositAmount) throws AccountException;
+
     void deleteUser(long id) throws AccountException;
+
+
 
 
 

@@ -69,6 +69,28 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
+    public void processWithdrawal(Long accountId, Long withdrawalAmount) throws AccountException {
+        Account account = getAccountById(accountId);
+        long updatedBalance = account.getBalance() - withdrawalAmount;
+
+        if(updatedBalance < 0)
+            throw new AccountException("insufficient funds");
+        account.setBalance(updatedBalance);
+        accountRepo.save(account);
+
+    }
+
+    @Override
+    public void processDeposit(Long accountId, Long depositAmount) throws AccountException {
+        Account account = getAccountById(accountId);
+        long updatedBalance = account.getBalance() + depositAmount;
+
+        account.setBalance(updatedBalance);
+        accountRepo.save(account);
+
+    }
+
+    @Override
     public void deleteUser(long id) throws AccountException {
         Account account = getAccountById(id);
         accountRepo.delete(account);
