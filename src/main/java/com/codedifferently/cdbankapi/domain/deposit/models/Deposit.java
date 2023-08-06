@@ -4,6 +4,7 @@ import com.codedifferently.cdbankapi.domain.account.models.Account;
 import com.codedifferently.cdbankapi.domain.enums.Medium;
 import com.codedifferently.cdbankapi.domain.enums.Type;
 import com.codedifferently.cdbankapi.domain.enums.Status;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
@@ -26,8 +27,7 @@ public class Deposit {
     private Type type;
 
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Account account;
+
 
     public Deposit(Long id, Medium medium, String transaction_date, int amount, String description, Status status, int payee_id, Type type, Account account) {
         this.id = id;
@@ -38,7 +38,6 @@ public class Deposit {
         this.status = status;
         this.payee_id = payee_id;
         this.type = type;
-        this.account = account;
     }
 
     public Deposit() {
@@ -109,11 +108,6 @@ public class Deposit {
         this.type = type;
     }
 
-    public Account getAccount() {
-        return account;
-    }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
+
 }

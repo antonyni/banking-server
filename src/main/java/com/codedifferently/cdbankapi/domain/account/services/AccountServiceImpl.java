@@ -26,7 +26,7 @@ public class AccountServiceImpl implements AccountService{
         Optional<Account> accountOptional = accountRepo.findByNickname(account.getNickname());
         if(accountOptional.isPresent())
             throw new AccountException("Account with nickname exists: " + account.getNickname());
-        return accountRepo.save(accountOptional.get());
+        return accountRepo.save(account);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AccountServiceImpl implements AccountService{
     @Override
     public Long getAccountIdByNickname(String nickname) {
         Optional<Account> accountOptional = accountRepo.findByNickname(nickname);
-        if(accountOptional.isPresent())
+        if(accountOptional.isEmpty())
             return 0L;
         return accountOptional.get().getId();
     }

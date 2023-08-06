@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 
@@ -15,12 +16,14 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@RequiredArgsConstructor
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NonNull
+    @Enumerated(EnumType.STRING) // Use EnumType.STRING for string-based representation
     private Type type;
 
     @NonNull
@@ -33,21 +36,17 @@ public class Account {
     private String customer;
 
     @NonNull
-
     private String password;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy ="account")
-    @JsonManagedReference
+    @NonNull
+    @OneToMany(cascade = CascadeType.ALL)
+
     private List<Deposit> deposits;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy ="account")
-    @JsonManagedReference
+    @NonNull
+    @OneToMany(cascade = CascadeType.ALL)
+
     private List<Withdrawal> withdrawals;
-
-
-
-
-
 
 
 }
