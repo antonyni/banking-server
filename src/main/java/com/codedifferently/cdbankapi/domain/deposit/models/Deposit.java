@@ -1,5 +1,6 @@
 package com.codedifferently.cdbankapi.domain.deposit.models;
 
+import com.codedifferently.cdbankapi.domain.account.models.Account;
 import com.codedifferently.cdbankapi.domain.enums.Medium;
 import com.codedifferently.cdbankapi.domain.enums.Type;
 import com.codedifferently.cdbankapi.domain.enums.Status;
