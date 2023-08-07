@@ -4,10 +4,7 @@ package com.codedifferently.cdbankapi.domain.withdrawl.models;
 import com.codedifferently.cdbankapi.domain.enums.Medium;
 import com.codedifferently.cdbankapi.domain.enums.Status;
 import com.codedifferently.cdbankapi.domain.enums.Type;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.Date;
@@ -25,18 +22,21 @@ public class Withdrawal {
     private long id;
 
     @NonNull
+    @Enumerated(EnumType.STRING)
     private Type type;
 
     @NonNull
     private Date transactionDate;
 
     @NonNull
+    @Enumerated(EnumType.STRING)
     private Status status;
 
     @NonNull
     private String payer;
 
     @NonNull
+    @Enumerated(EnumType.STRING)
     private Medium medium;
 
     @NonNull
