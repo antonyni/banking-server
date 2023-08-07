@@ -32,16 +32,6 @@ public class Deposit {
     private String payee;
 
 
-    public Deposit(Long id, Medium medium, String transaction_date, int amount, String description, Status status, int payee_id, Type type, Account account) {
-        this.id = id;
-        this.medium = medium;
-        this.transaction_date = transaction_date;
-        this.amount = amount;
-        this.description = description;
-        this.status = status;
-        this.payee_id = payee_id;
-        this.type = type;
-    }
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
