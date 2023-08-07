@@ -1,6 +1,6 @@
-package com.codedifferently.cdbankapi.domain.withdrawl.repos;
+package com.codedifferently.cdbankapi.domain.withdrawal.repos;
 
-import com.codedifferently.cdbankapi.domain.withdrawl.models.Withdrawal;
+import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

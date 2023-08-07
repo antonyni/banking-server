@@ -1,8 +1,8 @@
-package com.codedifferently.cdbankapi.domain.withdrawl.controller;
+package com.codedifferently.cdbankapi.domain.withdrawal.controller;
 
-import com.codedifferently.cdbankapi.domain.withdrawl.exceptions.WithdrawalException;
-import com.codedifferently.cdbankapi.domain.withdrawl.models.Withdrawal;
-import com.codedifferently.cdbankapi.domain.withdrawl.service.WithdrawalService;
+import com.codedifferently.cdbankapi.domain.withdrawal.exceptions.WithdrawalException;
+import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
+import com.codedifferently.cdbankapi.domain.withdrawal.service.WithdrawalService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

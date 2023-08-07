@@ -1,4 +1,4 @@
-package com.codedifferently.cdbankapi.domain.withdrawl.exceptions;
+package com.codedifferently.cdbankapi.domain.withdrawal.exceptions;
 
 public class WithdrawalException extends Exception {
     public WithdrawalException(String msg){

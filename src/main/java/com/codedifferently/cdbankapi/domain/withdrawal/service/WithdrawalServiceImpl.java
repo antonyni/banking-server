@@ -1,8 +1,8 @@
-package com.codedifferently.cdbankapi.domain.withdrawl.service;
+package com.codedifferently.cdbankapi.domain.withdrawal.service;
 
-import com.codedifferently.cdbankapi.domain.withdrawl.exceptions.WithdrawalException;
-import com.codedifferently.cdbankapi.domain.withdrawl.models.Withdrawal;
-import com.codedifferently.cdbankapi.domain.withdrawl.repos.WithdrawalRepo;
+import com.codedifferently.cdbankapi.domain.withdrawal.exceptions.WithdrawalException;
+import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
+import com.codedifferently.cdbankapi.domain.withdrawal.repos.WithdrawalRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

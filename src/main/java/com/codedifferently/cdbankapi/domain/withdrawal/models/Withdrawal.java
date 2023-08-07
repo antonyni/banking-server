@@ -1,4 +1,4 @@
-package com.codedifferently.cdbankapi.domain.withdrawl.models;
+package com.codedifferently.cdbankapi.domain.withdrawal.models;
 
 
 import com.codedifferently.cdbankapi.domain.enums.Medium;
