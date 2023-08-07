@@ -1,7 +1,7 @@
-package com.codedifferently.cdbankapi.domain.withdrawl.service;
+package com.codedifferently.cdbankapi.domain.withdrawal.service;
 
-import com.codedifferently.cdbankapi.domain.withdrawl.exceptions.WithdrawalException;
-import com.codedifferently.cdbankapi.domain.withdrawl.models.Withdrawal;
+import com.codedifferently.cdbankapi.domain.withdrawal.exceptions.WithdrawalException;
+import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
 
 import java.util.List;
 
