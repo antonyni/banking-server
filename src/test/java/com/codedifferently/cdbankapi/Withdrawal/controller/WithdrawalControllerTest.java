@@ -109,7 +109,6 @@ public class WithdrawalControllerTest {
     public void updateWithdrawalFail() throws Exception {
         long id = 1L;
        BDDMockito.doThrow(new WithdrawalException("Not found")).when(mockWithdrawalService).updateWithdrawal(inputWithdrawal, id);
-       //BDDMockito.doThrow(new WithdrawalException("Not Found")).when(mockWithdrawalService).deleteWithdrawalById(id);
         mockMvc.perform(MockMvcRequestBuilders.put("/withdrawal/{id}",id)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(asJsonString(inputWithdrawal)))
