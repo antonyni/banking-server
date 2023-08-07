@@ -1,5 +1,6 @@
 package com.codedifferently.cdbankapi.domain.withdrawal.models;
 
+import com.codedifferently.cdbankapi.domain.Transaction;
 import com.codedifferently.cdbankapi.domain.account.models.Account;
 import com.codedifferently.cdbankapi.domain.enums.Medium;
 import com.codedifferently.cdbankapi.domain.enums.Status;
@@ -16,7 +17,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Withdrawal {
+public class Withdrawal extends Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +46,10 @@ public class Withdrawal {
     private Medium medium;
 
     @NonNull
-    private long amount;
+    private Long amount;
+
+    @Transient
+    private String transactionType;
 
 
 

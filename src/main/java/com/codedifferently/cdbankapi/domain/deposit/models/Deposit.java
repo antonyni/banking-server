@@ -1,5 +1,6 @@
 package com.codedifferently.cdbankapi.domain.deposit.models;
 
+import com.codedifferently.cdbankapi.domain.Transaction;
 import com.codedifferently.cdbankapi.domain.account.models.Account;
 import com.codedifferently.cdbankapi.domain.enums.Medium;
 import com.codedifferently.cdbankapi.domain.enums.Status;
@@ -18,7 +19,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class Deposit {
+public class Deposit extends Transaction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -53,10 +54,14 @@ public class Deposit {
 
     @NonNull
     @Column(nullable = false)
-    private long amount;
+    private Long amount;
 
     @NonNull
     private String description;
+
+    @Transient
+    private String transactionType;
+
 }
 
 

@@ -37,7 +37,7 @@ public class AccountController {
     }
 
     @GetMapping("")
-    public ResponseEntity<List<Account>> getAllAccounts(){
+    public ResponseEntity<List<Account>> getAllAccounts() throws AccountException {
         List<Account> accountEntities = accountService.getAllAccounts();
         ResponseEntity<List<Account>> response = new ResponseEntity<>(accountEntities, HttpStatus.OK);
         return response;

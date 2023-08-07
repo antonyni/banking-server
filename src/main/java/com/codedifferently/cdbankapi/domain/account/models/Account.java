@@ -1,5 +1,6 @@
 package com.codedifferently.cdbankapi.domain.account.models;
 
+import com.codedifferently.cdbankapi.domain.Transaction;
 import com.codedifferently.cdbankapi.domain.deposit.models.Deposit;
 import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
 import com.codedifferently.cdbankapi.domain.enums.Type;
@@ -10,6 +11,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -40,13 +42,26 @@ public class Account {
 
     @NonNull
     @OneToMany(cascade = CascadeType.ALL)
-
+    @JoinColumn(name = "account_id")
     private List<Deposit> deposits;
 
     @NonNull
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "account_id")
     private List<Withdrawal> withdrawals;
+
+
+//    private static class Transaction{
+//        Transaction(){
+//
+//        }
+//
+//
+//
+//    }
+    @Transient
+    private List<Transaction> transactions = new ArrayList<>();
+
 
 
 

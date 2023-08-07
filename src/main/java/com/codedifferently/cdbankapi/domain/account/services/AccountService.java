@@ -11,7 +11,7 @@ public interface AccountService {
 
     Account getAccountById(Long id) throws AccountException;
 
-    List<Account> getAllAccounts();
+    List<Account> getAllAccounts() throws AccountException;
 
     Account updateAccount(Long id,Account accountDetail) throws AccountException;
 

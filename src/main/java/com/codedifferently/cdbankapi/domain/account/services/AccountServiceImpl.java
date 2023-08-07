@@ -1,14 +1,13 @@
 package com.codedifferently.cdbankapi.domain.account.services;
 
+import com.codedifferently.cdbankapi.domain.Transaction;
 import com.codedifferently.cdbankapi.domain.account.exceptions.AccountException;
 import com.codedifferently.cdbankapi.domain.account.models.Account;
 import com.codedifferently.cdbankapi.domain.account.repos.AccountRepo;
-import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AccountServiceImpl implements AccountService{
@@ -34,12 +33,19 @@ public class AccountServiceImpl implements AccountService{
     public Account getAccountById(Long id) throws AccountException {
         Account account = accountRepo.findById(id)
                 .orElseThrow(()-> new AccountException("No Account with id: " + id));
+        sortTransactions(account);
         return account;
     }
 
     @Override
-    public List<Account> getAllAccounts() {
-        return accountRepo.findAll();
+    public List<Account> getAllAccounts() throws AccountException {
+        List<Account> accountList = accountRepo.findAll();
+
+        for(Account account: accountList){
+            sortTransactions(account);
+        }
+
+        return accountList;
     }
 
     @Override
@@ -97,5 +103,24 @@ public class AccountServiceImpl implements AccountService{
         accountRepo.delete(account);
     }
 
+    private <T extends Transaction> void addTransactions(List<T> transactionList, Account account,String transactionType) throws AccountException {
+        if(transactionList != null){
+            Long id = account.getId();
+           if(!(transactionList.isEmpty())){
+               for(T transaction: transactionList){
+                   transaction.setTransactionType(transactionType);
+                   account.getTransactions().add(transaction);
+
+               }
+           }
+        }
+
+    }
+
+    private void sortTransactions (Account account) throws AccountException {
+        addTransactions(account.getWithdrawals(), account,"Withdrawal");
+        addTransactions(account.getDeposits(), account,"Deposit");
+        account.getTransactions().sort(Comparator.comparing(Transaction::getTransactionDate));
+    }
 
 }
