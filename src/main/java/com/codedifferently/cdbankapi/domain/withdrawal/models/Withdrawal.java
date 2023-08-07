@@ -23,6 +23,10 @@ public class Withdrawal {
     private long id;
 
     @NonNull
+    @Column(name ="account_id")
+    private long accountId;
+
+    @NonNull
     @Enumerated(EnumType.STRING)
     private Type type;
 
@@ -42,6 +46,8 @@ public class Withdrawal {
 
     @NonNull
     private long amount;
+
+
 
     private String description;
 

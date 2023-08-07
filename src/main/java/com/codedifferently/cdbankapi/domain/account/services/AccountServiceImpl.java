@@ -3,6 +3,7 @@ package com.codedifferently.cdbankapi.domain.account.services;
 import com.codedifferently.cdbankapi.domain.account.exceptions.AccountException;
 import com.codedifferently.cdbankapi.domain.account.models.Account;
 import com.codedifferently.cdbankapi.domain.account.repos.AccountRepo;
+import com.codedifferently.cdbankapi.domain.withdrawal.models.Withdrawal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -95,4 +96,6 @@ public class AccountServiceImpl implements AccountService{
         Account account = getAccountById(id);
         accountRepo.delete(account);
     }
+
+
 }

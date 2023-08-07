@@ -45,7 +45,7 @@ public class Account {
 
     @NonNull
     @OneToMany(cascade = CascadeType.ALL)
-
+    @JoinColumn(name = "account_id")
     private List<Withdrawal> withdrawals;
 
 
