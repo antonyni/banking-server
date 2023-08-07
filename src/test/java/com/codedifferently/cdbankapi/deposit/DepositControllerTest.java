@@ -51,7 +51,7 @@ public class DepositControllerTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = sdf.parse("2022-01-15 12:30:45");
 
-        inputDeposit = new Deposit(1L, Type.CHECKINGS, date, Status.COMPLETED, "John", Medium.BALANCE, 1000, "Finished");
+        inputDeposit = new Deposit(1L,1L,Type.CHECKINGS, date, Status.COMPLETED, "John", Medium.BALANCE, 1000, "Finished");
 
         mockResponseDeposit1 = new Deposit();
         mockResponseDeposit1.setId(2L);

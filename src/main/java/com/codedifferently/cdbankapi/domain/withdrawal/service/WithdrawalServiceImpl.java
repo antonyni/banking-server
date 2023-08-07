@@ -35,7 +35,6 @@ public class WithdrawalServiceImpl implements WithdrawalService {
         updateWithdrawal.setType(withdrawal.getType());
         updateWithdrawal.setMedium(withdrawal.getMedium());
         updateWithdrawal.setTransactionDate(withdrawal.getTransactionDate());
-
         withdrawalRepo.save(updateWithdrawal);
 
         return updateWithdrawal;

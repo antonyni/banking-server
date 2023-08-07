@@ -52,7 +52,7 @@ public class WithdrawalControllerTest {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         date = sdf.parse("2022-01-15 12:30:45");
 
-        inputWithdrawal = new Withdrawal(1L, Type.CHECKINGS, date, Status.COMPLETED, "John", Medium.BALANCE, 1000, "Finished");
+        inputWithdrawal = new Withdrawal(1L,1L, Type.CHECKINGS, date, Status.COMPLETED, "John", Medium.BALANCE, 1000, "Finished");
 
         mockResponseWithdrawal1 = new Withdrawal();
         mockResponseWithdrawal2 = new Withdrawal();

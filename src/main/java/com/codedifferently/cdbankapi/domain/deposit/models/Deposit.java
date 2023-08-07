@@ -8,136 +8,55 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
+import lombok.*;
+
 import java.util.Date;
 
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@ToString
 public class Deposit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @NonNull
+    @Column(name ="account_id")
+    private long accountId;
+
+    @NonNull
     @Enumerated(EnumType.STRING)
     private Type type;
 
+    @NonNull
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private Date transactionDate;
 
+    @NonNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Status status;
 
+    @NonNull
     @Column(nullable = false)
     private String payee;
 
-
-
+    @NonNull
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Medium medium;
 
+    @NonNull
     @Column(nullable = false)
     private long amount;
 
+    @NonNull
     private String description;
-
-    // Constructors
-    public Deposit() {
-    }
-
-    public Deposit(Type type, Date transactionDate, Status status, String payee, Medium medium, long amount, String description) {
-        this.type = type;
-        this.transactionDate = transactionDate;
-        this.status = status;
-        this.payee = payee;
-        this.medium = medium;
-        this.amount = amount;
-        this.description = description;
-    }
-
-    public Deposit(long l, Type type, Date date, Status status, String john, Medium medium, int i, String finished) {
-    }
-
-    // Getters and Setters
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    public Date getTransactionDate() {
-        return transactionDate;
-    }
-
-    public void setTransactionDate(Date transactionDate) {
-        this.transactionDate = transactionDate;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public String getPayee() {
-        return payee;
-    }
-
-    public void setPayee(String payee) {
-        this.payee = payee;
-    }
-
-    public Medium getMedium() {
-        return medium;
-    }
-
-    public void setMedium(Medium medium) {
-        this.medium = medium;
-    }
-
-    public long getAmount() {
-        return amount;
-    }
-
-    public void setAmount(long amount) {
-        this.amount = amount;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    // Override toString method
-    @Override
-    public String toString() {
-        return "Deposit{" +
-                "id=" + id +
-                ", type=" + type +
-                ", transactionDate=" + transactionDate +
-                ", status=" + status +
-                ", payee='" + payee + '\'' +
-                ", medium=" + medium +
-                ", amount=" + amount +
-                ", description='" + description + '\'' +
-                '}';
-    }
 }
 
 
